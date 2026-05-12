@@ -1,6 +1,7 @@
 package com.example.jogoforca;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.IntegerRes;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -131,6 +133,8 @@ public class TelaJogo extends AppCompatActivity implements View.OnClickListener 
             Button b = findViewById(listaIDsButtons.get(i));
             b.setEnabled(true);
         }
+        txErro.setText(Integer.toString(erro)+"/"+Integer.toString(listaImagem.size()));
+        txAcerto.setText(Integer.toString(acerto));
     }
 
     public String sorteiaPalavra(){
@@ -165,10 +169,12 @@ public class TelaJogo extends AppCompatActivity implements View.OnClickListener 
             atualizaImagem();
             erro++;
             txErro.setText(Integer.toString(erro)+"/"+Integer.toString(listaImagem.size()));
+            checaTermino();
         }else{
             atualizaTexto();
             acerto++;
             txAcerto.setText(Integer.toString(acerto));
+            checaTermino();
         }
     }
 
@@ -177,7 +183,33 @@ public class TelaJogo extends AppCompatActivity implements View.OnClickListener 
         for(int i =0;i<estado.length;i++){
             if(estado[i]=='_'){
                 verifica = true;
+                //se foi para true é pq ainda tem underline
             }
+        }
+        if(!verifica){
+            //aqui se ele ganhou
+            AlertDialog.Builder caixa = new AlertDialog.Builder(this);
+            caixa.setTitle("Você Ganhou :)");
+            caixa.setMessage("Deseja jogar novamente?");
+            caixa.setPositiveButton("Jogar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    inicializaJogo();
+                }
+            });
+            caixa.show();
+        }
+        if(erro >= listaImagem.size()){
+            AlertDialog.Builder caixa = new AlertDialog.Builder(this);
+            caixa.setTitle("Você Perdeu :(");
+            caixa.setMessage("Deseja jogar novamente?");
+            caixa.setPositiveButton("Jogar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    inicializaJogo();
+                }
+            });
+            caixa.show();
         }
     }
 
