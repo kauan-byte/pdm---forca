@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Escreva a palavra :"
+            android:textColor="#F8F4F4"
             android:textSize="26sp" />
 
         <TextView
@@ -63,7 +64,9 @@
             android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Categoria :"
+            android:textColor="#F8F3F3"
             android:textSize="26sp" />
 
         <RadioGroup
