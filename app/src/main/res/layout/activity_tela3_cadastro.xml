@@ -42,16 +42,14 @@
             android:textColor="#F8F4F4"
             android:textSize="26sp" />
 
-        <TextView
-            android:id="@+id/textView11"
+        <EditText
+            android:id="@+id/editTextText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="45dp"
             android:layout_weight="1"
-            android:background="@drawable/borda"
-            android:gravity="center"
-            android:text="Palavra "
-            android:textSize="26sp" />
+            android:ems="10"
+            android:inputType="text" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -70,6 +68,7 @@
             android:textSize="26sp" />
 
         <RadioGroup
+            android:id="@+id/id_grupo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5sp"
@@ -116,17 +115,29 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cadastrar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Cadastrar" />
+            android:text="Listar Dados" />
     </LinearLayout>
 
 </LinearLayout>
