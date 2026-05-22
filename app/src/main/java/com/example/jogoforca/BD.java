@@ -34,8 +34,8 @@ public class BD extends SQLiteOpenHelper {
         db.close();
     }
     public ArrayList<Palavra> listarPalavras(){
-       ArrayList<Palavra> lista = new ArrayList<Palavra>();
-       SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Palavra> lista = new ArrayList<Palavra>();
+        SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query("palavra", null, null, null, null, null, null);
         while(cursor.moveToNext()){
             String palavra = cursor.getString(cursor.getColumnIndexOrThrow("palavra"));

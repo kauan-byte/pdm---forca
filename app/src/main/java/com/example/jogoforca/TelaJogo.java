@@ -27,11 +27,12 @@ public class TelaJogo extends AppCompatActivity implements View.OnClickListener 
     private char[] estado;
     private TextView texto;
     private ArrayList<Integer> listaImagem;
-    private ArrayList<String> listaPalavras;
+    private ArrayList<Palavra> listaPalavras;
     private ArrayList<Integer> listaIDsButtons;
     private int indiceImagem;
     private TextView txAcerto, txErro;
     private int acerto, erro;
+    private BD bd;
     private Button b1;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
@@ -62,19 +63,9 @@ public class TelaJogo extends AppCompatActivity implements View.OnClickListener 
         listaImagem.add(R.drawable.forca_10_9);
         listaImagem.add(R.drawable.forca_11_9);
 
-
-        listaPalavras = new ArrayList<String>();
-        listaPalavras.add("METAL");
-        listaPalavras.add("CORINTHIANS");
-        listaPalavras.add("NOTURNO");
-        listaPalavras.add("FELIZ");
-        listaPalavras.add("DINAMITE");
-        listaPalavras.add("LAMINA");
-        listaPalavras.add("FOGUETE");
-        listaPalavras.add("ARMA");
-        listaPalavras.add("CARRETA");
-        listaPalavras.add("TROMBONE");
-        listaPalavras.add("QUEIJO");
+        bd = new BD(TelaJogo.this);
+        listaPalavras = new ArrayList<Palavra>();
+        listaPalavras = bd.listarPalavras();
 
         texto = findViewById(R.id.imageView3);
         palavra = new String();
@@ -140,7 +131,7 @@ public class TelaJogo extends AppCompatActivity implements View.OnClickListener 
     public String sorteiaPalavra(){
         String sorteado;
         Collections.shuffle(listaPalavras);
-        sorteado = listaPalavras.get(0);
+        sorteado = listaPalavras.get(0).getNome();
         return sorteado;
     }
 
